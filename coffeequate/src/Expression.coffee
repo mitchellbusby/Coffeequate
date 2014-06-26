@@ -47,4 +47,17 @@ define ["parse", "nodes"], (parse, nodes) ->
 			new Expression(@expr.simplify())
 		expand: ->
 			new Expression(@expr.expand())
+
+		toFunction: (params...) =>
+			console.log("Blah")
+			return (innerParams...) =>
+				dict = {}
+				console.log("Hi")
+				for variable, index in params
+					console.log("hello")
+					dict[variable]=innerParams[index]
+				console.log("About to finish sub")
+				@sub(dict).toString()
+				console.log("Finished sub")
+
 	return Expression
